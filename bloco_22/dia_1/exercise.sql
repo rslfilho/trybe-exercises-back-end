@@ -43,8 +43,8 @@ CREATE TABLE animals (
 )  ENGINE=INNODB;
 
 CREATE TABLE animals_tutors(
-	animal_id INT NOT NULL,
-    tutor_id INT NOT NULL,
+	animal_id INT,
+    tutor_id INT,
 	CONSTRAINT PRIMARY KEY(animal_id, tutor_id),
 	FOREIGN KEY (animal_id) REFERENCES animals (animal_id),
 	FOREIGN KEY (tutor_id) REFERENCES tutors (tutor_id)
