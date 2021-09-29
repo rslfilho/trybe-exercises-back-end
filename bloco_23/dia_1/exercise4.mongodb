@@ -1,0 +1,89 @@
+use('sample');
+
+db.bios.find({ 'name.first': 'John' }).pretty();
+
+// RESPOSTA:
+// [
+//   {
+//     "_id": 1,
+//     "name": {
+//       "first": "John",
+//       "last": "Backus"
+//     },
+//     "birth": {
+//       "$date": {
+//         "$numberLong": "-1422558000000"
+//       }
+//     },
+//     "death": {
+//       "$date": "2007-03-17T04:00:00Z"
+//     },
+//     "contribs": [
+//       "Fortran",
+//       "ALGOL",
+//       "Backus-Naur Form",
+//       "FP"
+//     ],
+//     "awards": [
+//       {
+//         "award": "W.W. McDowell Award",
+//         "year": 1967,
+//         "by": "IEEE Computer Society"
+//       },
+//       {
+//         "award": "National Medal of Science",
+//         "year": 1975,
+//         "by": "National Science Foundation"
+//       },
+//       {
+//         "award": "Turing Award",
+//         "year": 1977,
+//         "by": "ACM"
+//       },
+//       {
+//         "award": "Draper Prize",
+//         "year": 1993,
+//         "by": "National Academy of Engineering"
+//       }
+//     ]
+//   },
+//   {
+//     "_id": {
+//       "$oid": "51df07b094c6acd67e492f41"
+//     },
+//     "name": {
+//       "first": "John",
+//       "last": "McCarthy"
+//     },
+//     "birth": {
+//       "$date": {
+//         "$numberLong": "-1335729600000"
+//       }
+//     },
+//     "death": {
+//       "$date": "2011-12-24T05:00:00Z"
+//     },
+//     "contribs": [
+//       "Lisp",
+//       "Artificial Intelligence",
+//       "ALGOL"
+//     ],
+//     "awards": [
+//       {
+//         "award": "Turing Award",
+//         "year": 1971,
+//         "by": "ACM"
+//       },
+//       {
+//         "award": "Kyoto Prize",
+//         "year": 1988,
+//         "by": "Inamori Foundation"
+//       },
+//       {
+//         "award": "National Medal of Science",
+//         "year": 1990,
+//         "by": "National Science Foundation"
+//       }
+//     ]
+//   }
+// ]
