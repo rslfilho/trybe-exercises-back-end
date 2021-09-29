@@ -1,0 +1,15 @@
+use('sample');
+
+db.bios.find({ _id: 8 }, { name: 1 });
+
+// RESPOSTA:
+// [
+//   {
+//     "_id": 8,
+//     "name": {
+//       "first": "Yukihiro",
+//       "aka": "Matz",
+//       "last": "Matsumoto"
+//     }
+//   }
+// ]

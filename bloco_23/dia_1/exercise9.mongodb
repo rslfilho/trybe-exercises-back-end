@@ -1,0 +1,22 @@
+use('sample');
+
+db.books.find({}, { _id: 0, title: 1, isbn: 1, pageCount: 1 }).limit(3);
+
+// RESPOSTA:
+// [
+//   {
+//     "title": "Android in Action, Second Edition",
+//     "isbn": "1935182722",
+//     "pageCount": 592
+//   },
+//   {
+//     "title": "Unlocking Android",
+//     "isbn": "1933988673",
+//     "pageCount": 416
+//   },
+//   {
+//     "title": "Flex 3 in Action",
+//     "isbn": "1933988746",
+//     "pageCount": 576
+//   }
+// ]

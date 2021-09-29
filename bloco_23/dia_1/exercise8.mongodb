@@ -1,0 +1,5 @@
+use('sample');
+
+db.books.countDocuments({ status: 'PUBLISH' });
+
+// RESPOSTA: 363

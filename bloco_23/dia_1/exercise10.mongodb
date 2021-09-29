@@ -1,0 +1,100 @@
+use('sample');
+
+db.books.find({ status: 'MEAP' }, { title: 1, authors: 1, status: 1 }).limit(10).skip(5);
+
+// RESPOSTA:
+// [
+//   {
+//     "_id": 550,
+//     "title": "Big Data",
+//     "status": "MEAP",
+//     "authors": [
+//       "Nathan Marz",
+//       "James Warren"
+//     ]
+//   },
+//   {
+//     "_id": 562,
+//     "title": "Java Persistence with Hibernate, Second Edition",
+//     "status": "MEAP",
+//     "authors": [
+//       "Christian Bauer",
+//       "Gavin King",
+//       "",
+//       "Gary Gregory"
+//     ]
+//   },
+//   {
+//     "_id": 599,
+//     "title": "Augmented Reality Revealed",
+//     "status": "MEAP",
+//     "authors": [
+//       "Robert A. Rice Jr."
+//     ]
+//   },
+//   {
+//     "_id": 607,
+//     "title": "Building Well-Structured JavaScript Applications",
+//     "status": "MEAP",
+//     "authors": [
+//       "Julio C. Ody"
+//     ]
+//   },
+//   {
+//     "_id": 637,
+//     "title": "Neo4j in Action",
+//     "status": "MEAP",
+//     "authors": [
+//       "Jonas Partner",
+//       "Aleksa Vukotic",
+//       "",
+//       "Nicki Watt"
+//     ]
+//   },
+//   {
+//     "_id": 640,
+//     "title": "Functional Programming in Scala",
+//     "status": "MEAP",
+//     "authors": [
+//       "Paul Chiusano",
+//       "Rúnar Bjarnason"
+//     ]
+//   },
+//   {
+//     "_id": 642,
+//     "title": "Node.js in Practice",
+//     "status": "MEAP",
+//     "authors": [
+//       "Alex Young",
+//       "Marc Harter"
+//     ]
+//   },
+//   {
+//     "_id": 648,
+//     "title": "RabbitMQ in Depth",
+//     "status": "MEAP",
+//     "authors": [
+//       "Gavin M. Roy"
+//     ]
+//   },
+//   {
+//     "_id": 649,
+//     "title": "Akka in Action",
+//     "status": "MEAP",
+//     "authors": [
+//       "Raymond Roestenburg",
+//       "Rob Bakker",
+//       "Rob Williams",
+//       "Steven Haines"
+//     ]
+//   },
+//   {
+//     "_id": 657,
+//     "title": "Grails in Action, Second Edition",
+//     "status": "MEAP",
+//     "authors": [
+//       "Glen Smith",
+//       "Peter Ledbrook"
+//     ]
+//   }
+// ]
