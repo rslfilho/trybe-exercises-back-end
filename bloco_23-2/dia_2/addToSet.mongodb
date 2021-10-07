@@ -1,0 +1,30 @@
+db.inventory.insertOne({
+  _id: 1,
+  item: "polarizing_filter",
+  tags: ["electronics", "camera"],
+});
+
+db.inventory.find();
+
+db.inventory.updateOne(
+  { _id: 1 },
+  { $addToSet: { tags: "accessories" } },
+);
+
+db.inventory.updateOne(
+  { _id: 1 },
+  { $addToSet: { tags: "camera"  } },
+);
+
+db.inventory.insertOne({ _id: 2, item: "cable", tags: ["electronics", "supplies"] });
+
+db.inventory.updateOne(
+  { _id: 2 },
+  {
+    $addToSet: {
+      tags: {
+        $each: ["camera", "electronics", "accessories"],
+      },
+    },
+  },
+);
