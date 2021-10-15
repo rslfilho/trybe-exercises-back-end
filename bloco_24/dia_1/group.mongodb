@@ -1,0 +1,55 @@
+db.transactions.aggregate([
+  {
+    $group: {
+      _id: "$bank",
+      count: {
+        $sum: 1
+      },
+    },
+  },
+]);
+
+db.transactions.aggregate([
+  {
+    $group: {
+      _id: "$bank",
+      qtdeTransacoes: {
+        $sum: 1
+      },
+      somaTransacoes: {
+        $sum: "$value",
+      },
+    },
+  },
+]);
+
+db.transactions.aggregate([
+  {
+    $group: {
+      _id: "$bank",
+      somaTransacoes: {
+        $sum: "$value",
+      },
+    },
+  },
+]);
+
+db.transactions.aggregate([
+  {
+    $group: {
+      _id: "$bank",
+      somaTransacoes: {
+        $sum: "$value",
+      },
+    },
+  },
+  {
+    $match: {
+      somaTransacoes: {
+        $gt: 1000,
+      },
+    },
+  },
+]);
+
+db.transactions.find();
