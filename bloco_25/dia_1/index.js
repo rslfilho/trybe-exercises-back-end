@@ -4,6 +4,8 @@ const scripts = [
   { name: 'IMC', script: './imc.js' },
   { name: 'Sorteio', script: './sorteio.js' },
   { name: 'Velocidade', script: './velocidade.js' },
+  { name: 'Fatorial', script: './fatorial.js' },
+  { name: 'Fibonacci', script: './fibonacci.js' },
 ];
 
 const chooseScript = () => {
