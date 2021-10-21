@@ -1,0 +1,4 @@
+Casa
+Carro
+Cadeira
+Planta
