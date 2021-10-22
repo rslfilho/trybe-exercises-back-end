@@ -1,1 +1,0 @@
-npm i -D mocha chai sinon nyc @types/mocha @types/sinon-chai
