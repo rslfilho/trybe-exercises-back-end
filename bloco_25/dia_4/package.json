@@ -8,8 +8,8 @@
     "express": "^4.17.1"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "node-dev index.js"
+    "start": "node src/index.js",
+    "dev": "node-dev src/index.js"
   },
   "devDependencies": {
     "node-dev": "^7.1.0"
