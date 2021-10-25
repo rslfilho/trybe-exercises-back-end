@@ -105,8 +105,8 @@ app.put('/drinks/:id', (req, res) => {
 });
 
 app.post('/drinks', (req, res) => {
-  const { id, name, price } = req.body;
-  drinks.push({ id, name, price});
+  const { id, name, price, waitTime } = req.body;
+  drinks.push({ id, name, price, waitTime });
   res.status(201).json({ message: 'Recipe created successfully!'}); 
 });
 
