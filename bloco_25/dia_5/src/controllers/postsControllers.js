@@ -1,19 +1,29 @@
-const getAll = (_req, res) => {
+const getAll = (_req, res, next) => {
   const random = Math.ceil(Math.random() * 3);
   
-  if (random === 2) return res.status(200).json({ posts: [] });
+  if (random === 2) {
+    res.status(200).json({ posts: [] });
+    return next();
+  };
 
-  return res.status(200).json({ posts: ["Sou todos os posts"] });
+  res.status(200).json({ posts: ["Sou todos os posts"] });
+  return next();
 };
 
-const getById = (req, res) => {
+const getById = (req, res, next) => {
   const { id } = req.params;
 
-  const random = Math.ceil(Math.random() * 5);
+  if (+id === 2) throw new Error('Testando handler de erro')
 
-  if (+id === random) return res.status(200).json({ post: "Esse é o post" });
+  const random = Math.ceil(Math.random() * 3);
 
-  return res.status(404).json({ "message": "post not found" });
+  if (+id === random) {
+    res.status(200).json({ post: "Esse é o post" });
+    return next();
+  } 
+
+  res.status(404).json({ "message": "post not found" });
+  return next();
 };
 
 module.exports = {

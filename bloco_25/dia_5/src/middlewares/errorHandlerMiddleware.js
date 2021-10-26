@@ -1,7 +1,9 @@
-module.exports = (err, _req, res, _next) => {
+module.exports = (err, _req, res, next) => {
   if (err.code && err.status) {
-    return res.status(err.status).json({ message: err.message, code: err.code });
+    res.status(err.status).json({ message: err.message, code: err.code });
+    next();
   }
 
-  return res.status(500).json({ message: err.message });
+  res.status(500).json({ message: err.message });
+  next();
 };
