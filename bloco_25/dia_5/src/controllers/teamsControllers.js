@@ -3,7 +3,7 @@ const fs = require('fs').promises;
 const add = async (req, res, next) => {
   const { name, initials , country, league } = req.body;
 
-  const teams = JSON.parse(await fs.readFile('./utils/teams.json', 'utf-8'));
+  const teams = JSON.parse(await fs.readFile('./src/utils/teams.json', 'utf-8'));
 
   teams.push({ name, initials, country, league });
 
