@@ -2,10 +2,10 @@ const express = require('express');
 
 const { validadeToken } = require('../middlewares')
 
-const { btcPriceController } = require('../controllers');
+const { btc } = require('../controllers');
 
 const router = express.Router();
 
-router.get('/price', validadeToken, btcPriceController);
+router.get('/price', validadeToken, btc.price);
 
 module.exports = router;
