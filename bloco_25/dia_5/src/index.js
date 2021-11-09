@@ -26,8 +26,10 @@ app.use(errorHandler);
 
 app.use(timeTracker);
 
-// app.all('*', (_req, res) => {
-//   res.status(404).json({ "message": "Opsss, route not found!" });
-// });
+app.all('*', (_req, res) => {
+  if (res._contentLength === null) {
+    res.status(404).json({ "message": "Opsss, route not found!" });
+  };
+});
 
 app.listen(3000, () => console.log('App listening at port 3000'));

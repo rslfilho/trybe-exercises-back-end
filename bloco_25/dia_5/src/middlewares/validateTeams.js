@@ -18,7 +18,7 @@ const validateFields = (req, res, next) => {
   const areInitialsValid = validateInitials(initials);
   const isCountryValid = validateCountry(country);
 
-  if (!(isNameValid && areInitialsValid && isCountryValid)) return res.status(400).json({ "message": "invalid data" });
+  if (!(isNameValid && areInitialsValid && isCountryValid)) return next({ status: 400, "message": "invalid data" });
 
   next();
 };

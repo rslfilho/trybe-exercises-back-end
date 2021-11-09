@@ -14,39 +14,39 @@ const validatePassword = (password) => {
   return false;
 };
 
-const validateRegister = (req, res, next) => {
+const validateRegister = (req, _res, next) => {
   const { username, email, password } = req.body;
 
   const isValidUsername = validateUsername(username);
   const isValidEmail = validadeEmail(email);
   const isValidPassword = validatePassword(password);
 
-  if(!(isValidUsername && isValidEmail && isValidPassword)) return res.status(400).json({ "message": "invalid data" });
+  if(!(isValidUsername && isValidEmail && isValidPassword)) return next({ status: 400, "message": "invalid data" });
 
   next();
 };
 
-const validadeLogin = (req, res, next) => {
+const validadeLogin = (req, _res, next) => {
   const { email, password } = req.body;
 
   const isValidEmail = validadeEmail(email);
   const isValidPassword = validatePassword(password);
 
-  if(!(isValidEmail && isValidPassword)) return res.status(400).json({ "message": "email or password is incorrect" });
+  if(!(isValidEmail && isValidPassword)) return next({ status: 400, "message": "email or password is incorrect" });
 
   next();
 };
 
-const validadeToken = (req, res, next) => {
+const validadeToken = (req, _res, next) => {
   const { authorization: token } = req.headers;
 
   const splittedToken = token.split('');
   const tokenLength = splittedToken.length;
-
+  const regexLettersAndNumbers = /^[a-zA-Z0-9]{12}$/;
   const hasNumber = splittedToken.some((char) => !(isNaN(char)));
   const hasNotNumber = splittedToken.some((char) => isNaN(char));
   
-  if(!(hasNumber && hasNotNumber && tokenLength === 12)) return res.status(401).json({ "message": "invalid token" });
+  if(!(hasNumber && hasNotNumber && tokenLength === 12)) return next({ status: 401, "message": "invalid token" });
 
   next();
 };
