@@ -5,6 +5,8 @@ const Author = require('./models/author');
 const Book = require('./models/book');
 const BookMiddleware = require('./middlewares/books');
 
+const AuthorM = require('./models/authorM');
+const BookM = require('./models/booksM');
 
 const PORT = 3000;
 
@@ -58,5 +60,40 @@ app.post('/books', BookMiddleware.isValid, async (req, res) => {
   res.status(201).json({ message: 'Livro criado com sucesso! '})
 });
 
+app.get('/mongo/authors', async (_req, res) => {
+  const authors = await AuthorM.getAll();
+
+  return res.status(200).json(authors);
+});
+
+app.get('/mongo/books', async (_req, res) => {
+  const books = await BookM.getAll();
+
+  return res.status(200).json(books);
+});
+
+app.get('/mongo/books/:id', async (req, res) => {
+  const { id } = req.params;
+  const book = await BookM.getById(id);
+
+  if (!book) return res.status(404).json({ message: "Not Found"});
+  res.status(200).json(book);
+});
+
+app.get('/mongo/books/author/:id', async (req, res) => {
+  const { id } = req.params;
+  const books = await BookM.getByAuthorId(id);
+
+  if (!books) return res.status(404).json({ message: "Not Found"});
+
+  res.status(200).json(books);
+});
+
+app.post('/mongo/books', BookMiddleware.isValid, async (req, res) => {
+  const { title, author_id } = req.body;
+  const book = await BookM.create(title, author_id);
+
+  res.status(200).json(book);
+})
 
 app.listen(PORT, () => console.log(`App running on port: ${PORT}`));
