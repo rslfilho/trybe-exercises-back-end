@@ -15,7 +15,7 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-  const [ books ] = await connection.execute(`SELECT id, title, author_id from books where id = ${id}`);
+  const [ books ] = await connection.execute(`SELECT id, title, author_id from books where id = ?`, [+id]);
 
   if(books.length === 0) return null;
 
@@ -23,7 +23,7 @@ const getById = async (id) => {
 };
 
 const getByAuthorId = async (id) => {
-  const [ books ] = await connection.execute(`SELECT id, title, author_id from books where author_id = ${id}`);
+  const [ books ] = await connection.execute(`SELECT id, title, author_id from books where author_id = ?`, [+id]);
 
   if(books.length === 0) return null;
 
@@ -31,7 +31,7 @@ const getByAuthorId = async (id) => {
 };
 
 const create = async (title, author_id) => await connection
-  .execute(`INSERT INTO books (title, author_id) VALUES ('${title}', ${author_id})`);
+  .execute(`INSERT INTO books (title, author_id) VALUES ('?', ?)`, [title, author_id]);
 
 module.exports = {
   getAll,
