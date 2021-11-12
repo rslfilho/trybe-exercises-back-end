@@ -1,0 +1,20 @@
+{
+  "name": "dia_1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node-dev src/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-rescue": "^1.1.31",
+    "mongodb": "^4.1.4",
+    "mysql2": "^2.3.3-rc.0"
+  },
+  "devDependencies": {
+    "node-dev": "^7.1.0"
+  }
+}
