@@ -1,5 +1,7 @@
-const User = require('./userMongo');
+const UserMongo = require('./userMongo');
+const UserMysql = require('./userMysql');
 
 module.exports = {
-  User,
+  UserMongo,
+  UserMysql,
 };
