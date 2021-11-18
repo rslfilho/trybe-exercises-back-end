@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const { MongoClient, MONGO_CLIENT_EVENTS } = require('mongodb');
+const { MongoClient } = require('mongodb');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
 const MoviesModel = require('../../models/movie');
