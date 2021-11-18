@@ -44,13 +44,13 @@ describe('Acha um filme no DB pelo ID', () => {
     });
 
     it('retorna um objeto', async () => {
-      const [ response ] = await MovieModel.getById(id);
+      const response = await MovieModel.getById(id);
 
       expect(response).to.be.a('object');
     });
 
     it('o objeto retornado tem todas as propriedades', async () => {
-      const [ response ] = await MovieModel.getById(id);
+      const response = await MovieModel.getById(id);
 
       expect(response).to.have.all.keys('_id', 'title', 'directedBy', 'releaseYear');
     });
