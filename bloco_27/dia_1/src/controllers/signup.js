@@ -23,7 +23,17 @@ module.exports = async (req, res) => {
 
     const usersData = JSON.parse(await fs.readFile('./src/models/data/users.json', 'utf-8'));
 
-    const { admin } = usersData.find((user) => user.username === username);
+    if (usersData.some((user) => user.username === username)) {
+      return res.status(409).json({ error: { message: 'user already exists' } });
+    }
+
+    let admin = false;
+
+    if (Math.floor(Math.random() * 100) > 50) admin = true;
+
+    const newUsersData = [...usersData, { username, password, admin }];
+
+    await fs.writeFile('./src/models/data/users.json', JSON.stringify(newUsersData));
 
     const token = jwt.sign({ username, admin }, secret, JWT_CONFIG);
 
