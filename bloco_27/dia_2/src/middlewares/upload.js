@@ -19,7 +19,7 @@ const fileFilter = (_req, file, callback) => {
 }
 
 const storage = multer.diskStorage({
-  destination: (_req, file, callback) => { file.originalname; callback(null, 'uploads') },
+  destination: (_req, _file, callback) => { callback(null, 'uploads') },
   filename: (_req, file, callback) => { callback(null, `${Date.now()}-${file.originalname}`) },
 });
 
