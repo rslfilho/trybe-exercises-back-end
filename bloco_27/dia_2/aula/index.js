@@ -12,8 +12,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use(express.static(path.resolve(__dirname + '/uploads')));
-app.use(express.static(path.resolve(__dirname + '/envios')));
+app.use(express.static(path.resolve(__dirname, '/uploads')));
+app.use(express.static(path.resolve(__dirname, '/envios')));
 
 const storage = multer.diskStorage({
   destination: (_req, _file, callback) => {

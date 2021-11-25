@@ -1,0 +1,17 @@
+{
+  "name": "dia_2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node-dev src/index.js"
+  },
+  "devDependencies": {
+    "node-dev": "^7.1.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.3"
+  }
+}
