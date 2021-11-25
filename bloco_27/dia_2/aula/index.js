@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const multer = require('multer');
+const path = require('path');
 
 const { PORT } = process.env;
 
@@ -11,10 +12,29 @@ const app = express();
 
 app.use(express.json());
 
-app.use(express.static(__dirname + '/uploads'));
-app.use(express.static(__dirname + '/envios'));
-const upload = multer({ dest: 'uploads' });
-const uploadEnvios = multer({ dest: 'envios' });
+app.use(express.static(path.resolve(__dirname + '/uploads')));
+app.use(express.static(path.resolve(__dirname + '/envios')));
+
+const storage = multer.diskStorage({
+  destination: (_req, _file, callback) => {
+    callback(null, 'uploads');
+  },
+  filename: (_req, file, callback) => {
+    callback(null, `Ihull - ${file.originalname}`);
+}});
+
+const upload = multer({ storage });
+
+const storageEnvios = multer.diskStorage({
+  destination: (_req, _file, callback) => {
+    callback(null, 'envios');
+  },
+  filename: (_req, file, callback) => {
+    callback(null, Date.now() + file.originalname);
+  },
+});
+
+const uploadEnvios = multer({ storage: storageEnvios });
 
 app.post('/files/upload', upload.single('file'), (req, res) =>
   res.status(200).json({ body: req.body, file: req.file })
