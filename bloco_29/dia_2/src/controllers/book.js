@@ -6,7 +6,12 @@ const router = express.Router();
 
 router.get('/', async (_req, res) => {
   try {
-    const books = await Book.findAll();
+    const books = await Book.findAll({
+      order: [
+        ['title', 'ASC'],
+        ['createdAt', 'ASC']
+      ]
+    });
 
     res.status(200).json(books);
   } catch (e) {
@@ -74,6 +79,20 @@ router.delete('/:id', async (req, res) => {
     );
 
     res.status(200).json({ message: `${deleted} livro(s) deletado(s)` });
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: 'Algo deu errado' });
+  }
+});
+
+router.get('/author/:name', async (req, res) => {
+  try {
+    const { name } = req.params;
+    const book = await Book.findAll({ where: { author: name } });
+
+    if (!book) return res.status(404).json({ message: 'Livro não encontrado' });
+
+    return res.status(200).json(book);
   } catch (e) {
     console.log(e.message);
     res.status(500).json({ message: 'Algo deu errado' });
