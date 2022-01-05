@@ -88,7 +88,12 @@ router.delete('/:id', async (req, res) => {
 router.get('/author/:name', async (req, res) => {
   try {
     const { name } = req.params;
-    const book = await Book.findAll({ where: { author: name } });
+    const book = await Book.findAll(
+      { where: { author: name } },
+      { order: [
+        ['title', 'ASC'],
+      ]}
+    );
 
     if (!book) return res.status(404).json({ message: 'Livro não encontrado' });
 
