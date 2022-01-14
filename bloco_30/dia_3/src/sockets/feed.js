@@ -20,5 +20,10 @@ module.exports = (io) => {
       stars += 1;
       io.emit('updateStars', stars);
     });
+
+    socket.on('disconnect', (reason) => {
+      console.log(`${socket.id} deconectou!`);
+      console.log(reason);
+    });
   });
 };
