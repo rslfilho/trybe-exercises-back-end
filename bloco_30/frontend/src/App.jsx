@@ -31,6 +31,7 @@ function App() {
 
   return (
     <>
+      <h1>$ Leilão do Cincão $</h1>
       {
         !username
         &&
@@ -43,10 +44,13 @@ function App() {
           value={name}
           onChange={ handleChange }
         />
-        <button type="submit" onClick={ handleChangeName }>Mudar Nome</button>
+        <button type="submit" onClick={ handleChangeName }>Entrar</button>
       </form>
+      } 
+      {
+        username &&
+        <p>Bem-vindo(a) { username }</p>
       }
-      <p>Usuário logado: { username || socket.id }</p>
       {
         username
         && 
@@ -55,19 +59,16 @@ function App() {
           products.map((product, index) => (
             <div className='card' key={ index }>
               <img src={ product.image } />
-              <p>{ product.name }</p>
+              <p className='card-name'>{ product.name }</p>
               <p>R$ { product.valor.toFixed(2) }</p>
               <button
                 onClick={ () => handleClick(product.id) }
                 disabled={ product.valor >= 100 }
               >
                 {
-                  product.valor >= 100 ? 'Arrematado' : 'Dar Lance'
+                  product.valor >= 100 ? `${product.ultimoLance} arrematou!` : 'Dar Lance R$ 5,00'
                 }
               </button>
-              {
-                product.valor >= 100 && <p>{ product.ultimoLance } arrematou</p>
-              }
             </div>
           ))
         }

@@ -1,14 +1,18 @@
 const express = require('express');
 
+const PORT = process.env.PORT || 3001;
 
+const app = express();
 
-const http = require('http').createServer();
+const http = require('http').createServer(app);
+
+app.use(express.static(__dirname + '/public'));
 
 const io = require('socket.io')(
   http,
   {
     cors: {
-      origin: 'http://localhost:3000',
+      origin: process.env.FRONTEND_URL || 'http://localhost:3000',
       methods: ['GET', 'POST'],
     },
   },
@@ -16,4 +20,4 @@ const io = require('socket.io')(
 
 require('./sockets/leilao')(io);
 
-http.listen(3001, () => console.log('App running on PORT 3001'));
+http.listen(PORT, () => console.log(`App running on PORT ${PORT}`));

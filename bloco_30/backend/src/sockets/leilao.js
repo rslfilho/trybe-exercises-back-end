@@ -1,22 +1,22 @@
 const produtos = [
   {
     id: 1,
-    name: 'quadro',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_639274-MLB48352969808_112021-O.webp',
+    name: 'Nato',
+    image: 'http://localhost:3001/img/nato.png',
     valor: 0,
     ultimoLance: '',
   },
   {
     id: 2,
-    name: 'skate',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_751831-MLB47273101541_082021-O.webp',
+    name: 'Rafa',
+    image: 'http://localhost:3001/img/rafa.png',
     valor: 0,
     ultimoLance: '',
   },
   {
     id: 3,
-    name: 'jogo de panelas',
-    image: 'https://http2.mlstatic.com/D_NQ_NP_807067-MLB47603710633_092021-O.webp',
+    name: 'Ricci',
+    image: 'http://localhost:3001/img/ricci.png',
     valor: 0,
     ultimoLance: '',
   },
